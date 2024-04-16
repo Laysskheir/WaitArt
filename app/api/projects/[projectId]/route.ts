@@ -1,7 +1,7 @@
 import currentUser from "@/actions/current-user";
 import { auth } from "@/auth";
 import { db } from "@/lib/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
   req: NextResponse,
@@ -34,7 +34,7 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  req: NextResponse,
+  req: NextRequest,
   { params }: { params: { projectId: string } }
 ) {
   try {
