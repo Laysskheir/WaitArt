@@ -2,9 +2,9 @@ import currentUser from "@/actions/current-user";
 import { auth } from "@/auth";
 import { generateSlug } from "@/data/slug";
 import { db } from "@/lib/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextResponse) {
+export async function POST(req: NextRequest ) {
   try {
     const user = await currentUser();
 
