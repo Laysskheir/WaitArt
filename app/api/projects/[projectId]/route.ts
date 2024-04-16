@@ -4,7 +4,7 @@ import { db } from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
-  req: NextResponse,
+  req: NextRequest,
   { params }: { params: { projectId: string } }
 ) {
   try {
