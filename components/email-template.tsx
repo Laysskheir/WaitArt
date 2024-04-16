@@ -23,7 +23,7 @@ export const SubmissionsEmail = ({ userFirstname }: SubmissionsEmailProps) => (
 
         <Text style={paragraph}>Hi {userFirstname},</Text>
         <Text style={paragraph}>
-          Thank you for joining WaitArt's waitlist! 🎉
+          Thank you for joining WaitArt waitlist! 🎉
         </Text>
         <Text style={paragraph}>
           You are now on the list to be notified first when we launch. Stay tuned
