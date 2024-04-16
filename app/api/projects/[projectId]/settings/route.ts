@@ -1,9 +1,9 @@
 import currentUser from "@/actions/current-user";
 import { db } from "@/lib/db";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function PATCH(
-  req: NextResponse,
+  req: NextRequest ,
   { params }: { params: { projectId: string } }
 ) {
   try {
