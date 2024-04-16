@@ -159,7 +159,7 @@ export default async function Dashboard() {
             <Card>
               <div className="flex flex-col items-center gap-1 text-center">
                 <CardHeader className="text-3xl font-bold tracking-tight">
-                  You don't have any projects yet
+                  You dont have any projects yet
                 </CardHeader>
                 <CardContent className="text-sm text-muted-foreground w-1/2">
                   Projects are forms for managing your waitlist. Customize and

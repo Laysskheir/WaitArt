@@ -100,7 +100,7 @@ export default async function Submissions({
                   </TableHeader>
                   <TableBody>
                     {submissions.map((submission) => (
-                      <TableRow>
+                      <TableRow key={submission.id}>
                         <TableCell className="font-medium">
                           {submission.email}
                         </TableCell>

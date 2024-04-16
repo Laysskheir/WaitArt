@@ -21,7 +21,7 @@ export default function FAQSection() {
           <p>
             WaitArt API helps you dynamically generate images for various use case.
             You get multiple Image Generation API templates, you just pass the
-            data from your app's backend and WaitArt API will generate the image
+            data from your apps backend and WaitArt API will generate the image
             for you
           </p>
         </div>
@@ -40,7 +40,7 @@ export default function FAQSection() {
           </h1>
           <p>
             Yes, you can cancel your subscription anytime. You can click on your
-            profile icon on top right and click on 'Manage Subscription'
+            profile icon on top right and click on Manage Subscription
           </p>
         </div>
       </div>

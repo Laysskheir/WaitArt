@@ -26,7 +26,7 @@ export const SubmissionsEmail = ({ userFirstname }: SubmissionsEmailProps) => (
           Thank you for joining WaitArt's waitlist! 🎉
         </Text>
         <Text style={paragraph}>
-          You're now on the list to be notified first when we launch. Stay tuned
+          You are now on the list to be notified first when we launch. Stay tuned
           for updates, after verified you submitted by click here
         </Text>
 
