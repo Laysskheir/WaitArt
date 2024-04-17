@@ -47,10 +47,7 @@ export function UserNav({ session }: any) {
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuGroup>
-          <DropdownMenuItem className="flex justify-between">
-            <p>Profile</p>
-            <PersonIcon />
-          </DropdownMenuItem>
+          
           <DropdownMenuItem
             onClick={() => onClick("/settings")}
             className="flex justify-between"

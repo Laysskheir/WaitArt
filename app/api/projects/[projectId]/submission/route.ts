@@ -1,7 +1,8 @@
 // /api/projects/[projectId]/submission.ts
 
 import currentUser from "@/actions/current-user";
-import { sendEmail } from "@/app/api/send/route";
+import { sendEmail } from "@/actions/send-email";
+
 import { db } from "@/lib/db";
 import { NextResponse } from "next/server";
 
@@ -75,7 +76,7 @@ export async function PATCH(
     // Update submission in the database
     const submission = await db.submission.update({
       where: {
-        id: submissionId, 
+        id: submissionId,
       },
       data: {
         verified: true,
@@ -88,3 +89,5 @@ export async function PATCH(
     return new NextResponse("Internal server error", { status: 500 });
   }
 }
+
+

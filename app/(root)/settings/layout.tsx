@@ -1,50 +1,44 @@
-import SettingSideBar from "@/components/SettingSideBar";
-import Link from "next/link";
+import { SettingSideBar } from "@/components/SettingSideBar";
+import { Separator } from "@/components/ui/separator";
+import { Metadata } from "next";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignLeft, Home, Package2, ShoppingCart } from "lucide-react";
-import { Button } from "@/components/ui/button";
-const SettingLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="max-w-7xl mt-8 mx-auto  sm:px-6 lg:px-8 grid grid-cols-4 gap-6">
-      <header className="sticky top-0 z-30 flex h-14 items-center gap-4 border-b bg-background px-4 sm:static sm:h-auto sm:border-0 sm:bg-transparent sm:px-6">
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button size="icon" variant="outline" className="sm:hidden">
-              <AlignLeft className="h-5 w-5" />
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left" className="sm:max-w-xs">
-            <nav className="grid gap-6 text-lg font-medium">
-              <Link
-                href="/"
-                className="group flex h-10 w-10 shrink-0 items-center justify-center gap-2 rounded-full bg-primary text-lg font-semibold text-primary-foreground md:text-base"
-              >
-                <Package2 className="h-5 w-5 transition-all group-hover:scale-110" />
-                <span className="sr-only">Acme Inc</span>
-              </Link>
-              <Link
-                href="/"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <Home className="h-5 w-5" />
-                Dashboard
-              </Link>
-              <Link
-                href="#"
-                className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
-              >
-                <ShoppingCart className="h-5 w-5" />
-                Orders
-              </Link>
-            </nav>
-          </SheetContent>
-        </Sheet>
-      </header>
-      <SettingSideBar />
-      <div className="col-span-3">{children}</div>
-    </div>
-  );
+export const metadata: Metadata = {
+  title: "Settings",
 };
 
-export default SettingLayout;
+const sidebarNavItems = [
+  {
+    title: "Profile",
+    href: "/settings",
+  },
+  {
+    title: "Account",
+    href: "/settings/billing",
+  },
+];
+
+interface SettingsLayoutProps {
+  children: React.ReactNode;
+}
+
+export default function SettingsLayout({ children }: SettingsLayoutProps) {
+  return (
+    <>
+      <div className=" space-y-6 p-10 pb-16 md:block">
+        <div className="space-y-0.5">
+          <h2 className="text-2xl font-bold tracking-tight">Settings</h2>
+          <p className="text-muted-foreground">
+            Manage your profile and account settings.
+          </p>
+        </div>
+        <Separator className="my-6" />
+        <div className="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+          <aside className=" border-muted border-b p-3  lg:w-1/5">
+            <SettingSideBar items={sidebarNavItems} />
+          </aside>
+          <div className="">{children}</div>
+        </div>
+      </div>
+    </>
+  );
+}

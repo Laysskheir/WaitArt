@@ -55,9 +55,9 @@ export default function LoginForm() {
       </Button>
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl"> Create an account</CardTitle>
+          <CardTitle className="text-2xl">Welcome</CardTitle>
           <CardDescription>
-            Enter your email below to create your account
+          Please sign in or sign up below.
           </CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">

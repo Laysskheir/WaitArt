@@ -4,7 +4,7 @@ import { stripe } from "@/lib/stripe";
 import { absoluteUrl } from "@/lib/utils";
 import { NextResponse } from "next/server";
 
-const settingUrl = absoluteUrl("/");
+const settingUrl = absoluteUrl("/settings/billing");
 
 export async function GET() {
   try {
@@ -32,7 +32,7 @@ export async function GET() {
       mode: "subscription",
       billing_address_collection: "auto",
       payment_method_types: ["card"],
-      customer: user.email!,
+      customer_email: user.email!,
       line_items: [
         {
           price_data: {

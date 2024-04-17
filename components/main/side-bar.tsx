@@ -18,7 +18,7 @@ const routes = [
 
   {
     label: "Pricing",
-    path: "/dashboard/pricing",
+    path: "/pricing",
     icon: Icons.lock,
   },
 ];

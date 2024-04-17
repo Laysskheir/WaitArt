@@ -1,6 +1,7 @@
 "use client";
 import { Icons } from "@/components/icons";
 import Loading from "@/components/loading";
+import PhoneSideBar from "@/components/phone-side-bar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import axios from "axios";
@@ -43,10 +44,11 @@ export default function Pricing() {
   };
   return (
     <section className="w-full py-6 md:py-12 lg:py-16">
+      <PhoneSideBar />
       <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-center mb-10 space-y-4 text-center">
           <div className="space-y-4">
-            <h2 className="text-3xl font-bold tracking-tighter sm:text-5xl">
+            <h2 className="text-3xl font-bold mt-4 tracking-tighter sm:text-5xl">
               WaitArt Pricing
             </h2>
             <p className="max-w-[700px] text-muted-foreground">

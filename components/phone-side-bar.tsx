@@ -27,7 +27,7 @@ export default function PhoneSideBar() {
               Dashboard
             </Link>
             <Link
-              href="/dashboard/pricing"
+              href="/pricing"
               className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
             >
               <Icons.lock className="h-5 w-5" />

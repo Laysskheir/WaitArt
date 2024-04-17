@@ -10,10 +10,8 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { AlignLeft, Home, Package2, ShoppingCart } from "lucide-react";
+
 import { Input } from "@/components/ui/input";
-import SettingSideBar from "@/components/SettingSideBar";
 
 export default function Settings() {
   return (
