@@ -1,14 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  AlignLeft,
-  Home,
-  Package2,
-  PanelLeft,
-  PlusCircle,
-  ShoppingCart,
-  Trash,
-} from "lucide-react";
+import { PlusCircle, Trash } from "lucide-react";
 
 import { Badge } from "@/components/ui/badge";
 import {
@@ -46,8 +38,6 @@ import { format } from "date-fns";
 import { DeleteProject } from "@/components/modals/delete-project";
 import { ImageIcon } from "@radix-ui/react-icons";
 import PhoneSideBar from "@/components/phone-side-bar";
-import { Suspense } from "react";
-import { CardProjectsSkeleton } from "@/components/skeletons";
 
 export default async function Dashboard() {
   const user = await currentUser();
@@ -92,73 +82,71 @@ export default async function Dashboard() {
             </div>
           </div>
           {projects.length > 0 ? (
-            <Suspense fallback={<CardProjectsSkeleton />}>
-              <Card>
-                <CardHeader>
-                  <CardTitle className="text-lg">Projects</CardTitle>
-                  <CardDescription>
-                    Manage your projects and view their sales performance.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <Table>
-                    <TableHeader>
-                      <TableRow>
-                        <TableHead>Logo</TableHead>
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Projects</CardTitle>
+                <CardDescription>
+                  Manage your projects and view their sales performance.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Table>
+                  <TableHeader>
+                    <TableRow>
+                      <TableHead>Logo</TableHead>
 
-                        <TableHead>Name</TableHead>
+                      <TableHead>Name</TableHead>
 
-                        <TableHead className="hidden md:table-cell">
-                          Created at
-                        </TableHead>
-                        <TableHead>Actions</TableHead>
+                      <TableHead className="hidden md:table-cell">
+                        Created at
+                      </TableHead>
+                      <TableHead>Actions</TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {projects.map((project) => (
+                      <TableRow key={project.id}>
+                        <TableCell className="">
+                          {project.logoUrl ? (
+                            <Image
+                              alt="Product image"
+                              className="aspect-square rounded-md object-cover"
+                              height="52"
+                              src={project.logoUrl!}
+                              width="52"
+                            />
+                          ) : (
+                            <div className="bg-white w-12 h-12 flex justify-center items-center  rounded-lg">
+                              <ImageIcon className="text-muted-foreground h-8 w-8" />
+                            </div>
+                          )}
+                        </TableCell>
+                        <TableCell className="font-medium">
+                          <Link href={`/dashboard/${project.id}`}>
+                            {project.name}
+                          </Link>
+                        </TableCell>
+
+                        <TableCell className="hidden md:table-cell">
+                          {format(project.createdAt, "dd/M/yyyy")}
+                        </TableCell>
+                        <TableCell>
+                          <DeleteProject projectId={project.id}>
+                            <Button
+                              variant="ghost"
+                              className="hover:bg-destructive"
+                              size="sm"
+                            >
+                              <Trash className="w-4 h-4" />
+                            </Button>
+                          </DeleteProject>
+                        </TableCell>
                       </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {projects.map((project) => (
-                        <TableRow key={project.id}>
-                          <TableCell className="">
-                            {project.logoUrl ? (
-                              <Image
-                                alt="Product image"
-                                className="aspect-square rounded-md object-cover"
-                                height="52"
-                                src={project.logoUrl!}
-                                width="52"
-                              />
-                            ) : (
-                              <div className="bg-white w-12 h-12 flex justify-center items-center  rounded-lg">
-                                <ImageIcon className="text-muted-foreground h-8 w-8" />
-                              </div>
-                            )}
-                          </TableCell>
-                          <TableCell className="font-medium">
-                            <Link href={`/dashboard/${project.id}`}>
-                              {project.name}
-                            </Link>
-                          </TableCell>
-
-                          <TableCell className="hidden md:table-cell">
-                            {format(project.createdAt, "dd/M/yyyy")}
-                          </TableCell>
-                          <TableCell>
-                            <DeleteProject projectId={project.id}>
-                              <Button
-                                variant="ghost"
-                                className="hover:bg-destructive"
-                                size="sm"
-                              >
-                                <Trash className="w-4 h-4" />
-                              </Button>
-                            </DeleteProject>
-                          </TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </CardContent>
-              </Card>
-            </Suspense>
+                    ))}
+                  </TableBody>
+                </Table>
+              </CardContent>
+            </Card>
           ) : (
             <Card>
               <div className="flex flex-col items-center gap-1 text-center">

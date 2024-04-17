@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 import SidebarItem from "./side-bar-item";
-import Image from "next/image";
 import { UserNav } from "../header/user-nav";
 
 const routes = [
