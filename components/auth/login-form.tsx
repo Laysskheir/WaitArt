@@ -27,6 +27,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Separator } from "../ui/separator";
 
 const FormSchema = z.object({
   email: z.string().min(2, {
@@ -56,9 +57,7 @@ export default function LoginForm() {
       <Card className="w-full max-w-sm">
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">Welcome</CardTitle>
-          <CardDescription>
-          Please sign in or sign up below.
-          </CardDescription>
+          <CardDescription>Please sign in or sign up below.</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
           {/* <Form {...form}>
@@ -103,18 +102,19 @@ export default function LoginForm() {
               </span>
             </div>
           </div> */}
-          <div className="grid grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-6">
             <Button
               variant="outline"
-              className="bg-blue-600 hover:bg-blue-700"
+              className="bg-primary hover:bg-primary/85"
               onClick={() => signIn("google")}
             >
               <Icons.google className="mr-2 h-4 w-4" />
-              Google
+              Continue with Google
             </Button>
+            <Separator />
             <Button variant="outline" onClick={() => signIn("github")}>
               <Icons.gitHub className="mr-2 h-4 w-4" />
-              Github
+              Continue with Github
             </Button>
           </div>
         </CardContent>

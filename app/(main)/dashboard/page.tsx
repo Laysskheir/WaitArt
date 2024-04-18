@@ -153,7 +153,7 @@ export default async function Dashboard() {
                 <CardHeader className="text-3xl font-bold tracking-tight">
                   You dont have any projects yet
                 </CardHeader>
-                <CardFooter className="text-sm text-muted-foreground w-1/2">
+                <CardFooter className="text-sm text-muted-foreground">
                   Projects are forms for managing your waitlist. Customize and
                   create personalized forms on your website for visitors to sign
                   up easily.
