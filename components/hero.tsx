@@ -4,8 +4,21 @@ import Link from "next/link";
 import { Highlight } from "@/components/ui/hero-highlight";
 import HeroFooter from "./hero-footer";
 import { motion } from "framer-motion";
+import { useRouter } from "next/navigation";
 
-export function Hero() {
+export function Hero({ session }: any) {
+  const router = useRouter();
+
+  const isAuthenticated = !!session;
+
+  const onclick = () => {
+    if (isAuthenticated) {
+      router.push("/dashboard");
+    } else {
+      router.push("/auth/login");
+    }
+  }
+
   return (
     <div
       className="flex flex-col items-center justify-between "
@@ -26,9 +39,9 @@ export function Hero() {
           <span className="underline italic"> 20 seconds</span>
         </p>
         <div className="flex justify-center mt-8">
-          <Button className="group relative h-12 overflow-hidden overflow-x-hidden rounded-md hover:text-black   px-8 py-2 ">
+          <Button onClick={onclick} className="group relative h-12 overflow-hidden overflow-x-hidden rounded-md hover:text-black   px-8 py-2 ">
             <span className="relative z-10">
-              <Link href="/dashboard">Try now for free</Link>
+              Try now for free
             </span>
             <span className="absolute inset-0 overflow-hidden rounded-md">
               <span className="absolute left-0 aspect-square w-full origin-center -translate-x-full rounded-full bg-primary-foreground  transition-all duration-500 group-hover:-translate-x-0 group-hover:scale-150"></span>

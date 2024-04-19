@@ -10,9 +10,7 @@ export default async function Page({
   params: { projectId: string };
 }) {
   const user = await currentUser();
-  if (!user?.id) {
-    redirect("/auth/login");
-  }
+  
   const settings = await db.settings.findMany({
     where: {
       projectId: params.projectId,

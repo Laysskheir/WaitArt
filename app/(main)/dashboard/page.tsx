@@ -41,9 +41,9 @@ import PhoneSideBar from "@/components/phone-side-bar";
 
 export default async function Dashboard() {
   const user = await currentUser();
-  if (!user?.id) {
-    redirect("/auth/login");
-  }
+  // if (!user?.id) {
+  //   redirect("/auth/login");
+  // }
 
   const projects = await db.project.findMany({
     where: {

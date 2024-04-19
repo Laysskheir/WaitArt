@@ -5,10 +5,8 @@ import { motion } from "framer-motion";
 
 export default function HeroFooter() {
   return (
-    <motion.div
-    initial={{ y: 100, opacity: 0 }}
-  animate={{ y: 0, opacity: 1 }}
-  transition={{ duration: 1.5 }}
+    <div
+      
       className="text-sm space-y-3 text-center text-muted-foreground"
     >
       <p>
@@ -33,6 +31,6 @@ export default function HeroFooter() {
         <Separator orientation="vertical" />
         <div>Privacy</div>
       </div>
-    </motion.div>
+    </div>
   );
 }

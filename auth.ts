@@ -12,17 +12,17 @@ export const {
   signOut,
 } = NextAuth({
   adapter: PrismaAdapter(db),
-  callbacks: {
-    async session({ token, session }) {
-      console.log("Session Token", token);
+  // callbacks: {
+  //   async session({ token, session }) {
+  //     console.log("Session Token", token);
 
-      return session;
-    },
-    async jwt({ token }) {
-      console.log("JWT Token", token);
-      return token;
-    },
-  },
+  //     return session;
+  //   },
+  //   async jwt({ token }) {
+  //     console.log("JWT Token", token);
+  //     return token;
+  //   },
+  // },
   pages: {
     signIn: "/auth/login",
     error: "/auth/error",

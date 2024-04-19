@@ -1,16 +1,23 @@
-import { auth } from "./auth";
+import NextAuth from "next-auth";
+import { DEFAULT_REDIRECT, PUBLIC_ROUTES, ROOT } from "@/routes";
+import authConfig from "./auth.config";
+
+const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
-  // const { nextUrl } = req;
-  // const isLoggedIn = !!req.auth;
-  // const DEFAULT_LOGIN_REDIRECT = process.env.DEFAULT_LOGIN_REDIRECT!;
+  const { nextUrl } = req;
+  console.log(!!req.auth);
 
-  // if (isLoggedIn) {
-  //   return Response.redirect(new URL(DEFAULT_LOGIN_REDIRECT, nextUrl));
-  // }
+  const isAuthenticated = !!req.auth;
+  const isPublicRoute = PUBLIC_ROUTES.includes(nextUrl.pathname);
+
+  if (isPublicRoute && isAuthenticated)
+    return Response.redirect(new URL(DEFAULT_REDIRECT, nextUrl));
+
+  if (!isAuthenticated && !isPublicRoute)
+    return Response.redirect(new URL(ROOT, nextUrl));
 });
 
-// Optionally, don't invoke Middleware on some paths
 export const config = {
-  matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/(api|trpc)(.*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

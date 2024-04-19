@@ -1,6 +1,7 @@
 "use client";
 import { Icons } from "@/components/icons";
 import Loading from "@/components/loading";
+import Faq from "@/components/main/faq";
 import PhoneSideBar from "@/components/phone-side-bar";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -82,7 +83,7 @@ export default function Pricing() {
                 </li>
               ))}
             </ul>
-            <Button asChild>
+            <Button variant="secondary" asChild>
               <Link href="/dashboard">Start for free</Link>
             </Button>
           </Card>
@@ -105,12 +106,11 @@ export default function Pricing() {
               ))}
             </ul>
             <Button onClick={onSubscribe}>
-              {loading ? <Loading /> : <p>Get started</p>}
+              {loading ? <Loading /> : <p>Buy now</p>}
             </Button>
           </Card>
         </div>
-
-        
+        {/* <Faq /> */}
       </div>
     </section>
   );

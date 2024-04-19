@@ -1,6 +1,6 @@
 import Navbar from "@/components/header/nav-bar";
 
-const RootLayout = ({ children }: { children: React.ReactNode }) => {
+const  RootLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className="">
       <Navbar />

@@ -39,7 +39,7 @@ export default function SidebarItem({ label, path, icon: Icon }: any) {
               : "text-muted-foreground hover:text-foreground"
           )}
         >
-          <Icon className="h-4 w-4" />
+          <Icon className="h-5 w-5" />
           <p>{label}</p>
         </Button>
   );

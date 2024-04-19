@@ -54,9 +54,9 @@ export default function LoginForm() {
           <Icons.arrow className="w-4 h-4" /> <span>Home</span>
         </Link>
       </Button>
-      <Card className="w-full max-w-sm">
+      <Card className="w-full max-w-sm p-3">
         <CardHeader className="text-center">
-          <CardTitle className="text-2xl">Welcome</CardTitle>
+          <CardTitle className="text-3xl">Welcome</CardTitle>
           <CardDescription>Please sign in or sign up below.</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-4">
@@ -121,8 +121,8 @@ export default function LoginForm() {
         <CardFooter>
           <p className="text-xs text-muted-foreground text-center">
             By clicking continue, you agree to our{" "}
-            <span className="underline">Terms of Service</span> and Privacy{" "}
-            <span className="underline">Policy</span>.
+            <span className="underline text-sm">Terms </span>and
+            <span className="underline pl-1  text-sm">Privacy</span>.
           </p>
         </CardFooter>
       </Card>

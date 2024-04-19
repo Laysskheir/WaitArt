@@ -1,50 +1,68 @@
 "use client";
 
 import Link from "next/link";
-import { Icons } from "../icons";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 
 import SidebarItem from "./side-bar-item";
-import { UserNav } from "../header/user-nav";
+import {
+  GearIcon,
+  HomeIcon,
+  InfoCircledIcon,
+  LockOpen1Icon,
+  MinusCircledIcon,
+  MixIcon,
+} from "@radix-ui/react-icons";
+import Image from "next/image";
+import { logout } from "@/actions/logout";
 
 const routes = [
   {
-    label: "Dashboard",
+    label: "Home",
+    path: "/",
+    icon: HomeIcon,
+  },
+  {
+    label: "Projects",
     path: "/dashboard",
-    icon: Icons.dashboard,
+    icon: MixIcon,
   },
 
   {
     label: "Pricing",
     path: "/pricing",
-    icon: Icons.lock,
+    icon: LockOpen1Icon,
+  },
+  {
+    label: "Settings",
+    path: "/settings",
+    icon: GearIcon,
+  },
+];
+
+const fixedRoutes = [
+  {
+    label: "Help & Information",
+    path: "/",
+    icon: InfoCircledIcon,
   },
 ];
 
 export default function Sidebar({ session }: any) {
+  const handleLogout = () => {
+    logout();
+  };
   return (
-    <div className="hidden border-r  md:block w-80">
+    <div className="hidden border-r   md:block w-80">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
           <Link href="/" className="flex items-center gap-2 font-semibold">
-            <span className="self-center text-2xl font-bold whitespace-nowrap ml-8">Wait<span className="text-primary">Art</span></span>
+            <span className="self-center text-2xl font-bold whitespace-nowrap ml-8">
+              Wait<span className="text-primary">Art</span>
+            </span>
           </Link>
         </div>
-        <div className="flex-1  mt-6">
-          <nav className="grid items-start px-2 space-y-3 text-sm font-medium lg:px-4">
-            {routes.map((route) => (
-              <SidebarItem
-                key={route.path}
-                label={route.label}
-                path={route.path}
-                icon={route.icon}
-              />
-            ))}
-          </nav>
-        </div>
-        <div className="mt-auto p-4">
-          <Card>
+        <div className="">
+          {/* <Card>
             {session?.user ? (
               <div className="flex justify-center items-center p-2 gap-x-2">
                 <UserNav session={session} />
@@ -57,8 +75,59 @@ export default function Sidebar({ session }: any) {
                 <Link href="/auth/login">Login</Link>
               </Button>
             )}
-          </Card>
+          </Card> */}
         </div>
+        <div className="flex-1 ">
+          <nav className="grid items-start px-2 space-y-3 text-sm font-medium lg:px-4">
+            {session?.user && (
+              <div className="flex space-x-2 mb-4 p-3">
+                <div>
+                  <Image
+                    alt="Profile"
+                    className="rounded-full"
+                    src={session?.user?.image || "/placeholder.svg"}
+                    width={38}
+                    height={38}
+                  />
+                </div>
+                <div>
+                  <div className="text-sm"> {session?.user?.name}</div>
+                  <div className="text-xs text-muted-foreground">
+                    {session?.user?.email}
+                  </div>
+                </div>
+              </div>
+            )}
+            {routes.map((route) => (
+              <SidebarItem
+                key={route.path}
+                label={route.label}
+                path={route.path}
+                icon={route.icon}
+              />
+            ))}
+          </nav>
+        </div>
+        <nav className="grid items-start px-2 space-y-3 text-sm font-medium lg:px-4">
+          {fixedRoutes.map((route) => (
+            <SidebarItem
+              key={route.path}
+              label={route.label}
+              path={route.path}
+              icon={route.icon}
+            />
+          ))}
+
+          <Button
+            onClick={handleLogout}
+            variant="ghost"
+            size="sm"
+            className="flex items-center text-muted-foreground justify-start p-5  text-sm font-semibold gap-x-2  rounded-lg transition duration-200 ease-in-out focus:outline-none"
+          >
+            <MinusCircledIcon className="h-5 w-5" />
+            <p>Log Out</p>
+          </Button>
+        </nav>
       </div>
     </div>
   );

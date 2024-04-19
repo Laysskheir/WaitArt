@@ -13,9 +13,10 @@ export default {
       clientId: process.env.AUTH_GITHUB_ID,
       clientSecret: process.env.AUTH_GITHUB_SECRET,
       authorization: {
-        params: { scope: "user:email" }, 
+        params: { scope: "user:email" },
       },
     }),
+
     // Email({
     //   server: {
     //     host: process.env.EMAIL_SERVER_HOST,
@@ -29,4 +30,11 @@ export default {
     // }),
   ],
   secret: process.env.AUTH_SECRET,
+  callbacks: {
+    authorized({ auth }) {
+      const isAuthenticated = !!auth?.user;
+
+      return isAuthenticated;
+    },
+  },
 } satisfies NextAuthConfig;
