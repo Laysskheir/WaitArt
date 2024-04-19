@@ -1,6 +1,8 @@
+import { auth } from "@/auth";
 import { SettingSideBar } from "@/components/SettingSideBar";
 import { Separator } from "@/components/ui/separator";
 import { Metadata } from "next";
+import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
   title: "Settings",
@@ -21,7 +23,12 @@ interface SettingsLayoutProps {
   children: React.ReactNode;
 }
 
-export default function SettingsLayout({ children }: SettingsLayoutProps) {
+export default async function SettingsLayout({ children }: SettingsLayoutProps) {
+  const session = await auth();
+
+  if (!session){
+    redirect("/")
+  }
   return (
     <>
       <div className=" space-y-6 p-10 pb-16 md:block">

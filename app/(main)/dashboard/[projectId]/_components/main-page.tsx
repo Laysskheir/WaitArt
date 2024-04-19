@@ -33,6 +33,11 @@ import { people } from "@/data/people";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { useForm } from "react-hook-form";
 import { useToast } from "@/components/ui/use-toast";
+import { themeOptions } from "@/data/themes";
+import { Label } from "@/components/ui/label";
+import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Icons } from "@/components/icons";
+import { Skeleton } from "@/components/ui/skeleton";
 
 // interface MainPageProps {
 //   projectId: string;
@@ -176,9 +181,10 @@ export default function MainPage({
                   <div className="max-w-sm mx-auto p-2">
                     <div className="space-y-4">
                       <Tabs defaultValue="general">
-                        <TabsList className="grid w-full grid-cols-2">
+                        <TabsList className="grid w-full grid-cols-3">
                           <TabsTrigger value="general">General</TabsTrigger>
                           <TabsTrigger value="input">Input</TabsTrigger>
+                          <TabsTrigger value="themes">Themes</TabsTrigger>
                         </TabsList>
 
                         {/* general tab */}
@@ -633,6 +639,86 @@ export default function MainPage({
                                           className="resize-none"
                                           {...field}
                                         />
+                                      </FormControl>
+                                      <FormMessage />
+                                    </FormItem>
+                                  )}
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </TabsContent>
+
+                        {/* Themes tab */}
+                        <TabsContent value="themes">
+                          <div className="mt-4">
+                            <div className="p-4">
+                              <div className="">
+                                <FormField
+                                  control={form.control}
+                                  name="theme"
+                                  render={({ field }) => (
+                                    <FormItem>
+                                      <FormControl>
+                                        <RadioGroup
+                                          defaultValue="default"
+                                          className="grid grid-col-2 gap-3"
+                                        >
+                                          {themeOptions.map((theme) => (
+                                            <div key={theme.id}>
+                                              <RadioGroupItem
+                                                value={theme.id}
+                                                id={theme.id}
+                                                className="peer sr-only"
+                                              />
+                                              <Label
+                                                className={`flex cursor-pointer flex-col items-center justify-between rounded-md border-2 border-muted bg-popover p-4 hover:bg-accent hover:text-accent-foreground ${
+                                                  field.value === theme.id
+                                                    ? "border-white"
+                                                    : ""
+                                                }`}
+                                                onClick={() => {
+                                                  // Set the selected theme values to the form fields
+                                                  Object.entries(theme).forEach(
+                                                    ([key, value]: any) => {
+                                                      form.setValue(key, value);
+                                                    }
+                                                  );
+                                                }}
+                                              >
+                                                <div className="flex flex-col items-center space-y-2 mb-3">
+                                                  <Skeleton
+                                                    className="h-10 w-10 rounded-full "
+                                                    style={{
+                                                      backgroundColor:
+                                                        theme.buttonColor,
+                                                    }}
+                                                  />
+                                                  <div className="space-y-2">
+                                                    <Skeleton
+                                                      className="h-4 w-[150px] "
+                                                      style={{
+                                                        backgroundColor:
+                                                          theme.bgColor,
+                                                      }}
+                                                    />
+                                                    <Skeleton
+                                                      className="h-4 w-[150px] "
+                                                      style={{
+                                                        backgroundColor:
+                                                          theme.headingTextColor,
+                                                      }}
+                                                    />
+                                                  </div>
+                                                </div>
+
+                                                <p className="text-white/60">
+                                                  {theme.name}
+                                                </p>
+                                              </Label>
+                                            </div>
+                                          ))}
+                                        </RadioGroup>
                                       </FormControl>
                                       <FormMessage />
                                     </FormItem>

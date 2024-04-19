@@ -7,26 +7,31 @@ import {
   
   const faqs = [
     {
-      question: "How do you make holy water?",
+      question: "How do I create a form?",
       answer:
-        "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        "To create a form, navigate to the Forms section in the dashboard and click on the 'Create Form' button. You'll be guided through the form creation process step by step.",
     },
     {
-      question: "How do you make holy water?",
+      question: "Can I customize the design of my forms?",
       answer:
-        "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        "Yes, you can customize the design of your forms by selecting different color schemes, fonts, and themes. Explore the customization options in the Form Design settings.",
     },
     {
-      question: "How do you make holy water?",
+      question: "What themes are available for my forms?",
       answer:
-        "You boil the hell out of it. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat.",
+        "We offer a variety of themes for your forms, including minimal, quantum, and classic. Choose the theme that best suits your brand or style preferences.",
     },
-   
+    {
+      question: "How do I change the color scheme of my forms?",
+      answer:
+        "To change the color scheme of your forms, go to the Form Design settings and select the 'Colors' tab. From there, you can choose from a range of color options or create your custom color palette.",
+    },
   ];
+  
   
   export default function HelpPage() {
     return (
-      <div className="">
+      <div className="p-6">
         <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:py-20 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 lg:gap-8">
             <div>

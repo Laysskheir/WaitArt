@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 
 import SidebarItem from "./side-bar-item";
@@ -14,6 +13,7 @@ import {
 } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { logout } from "@/actions/logout";
+import Logo from "../header/logo";
 
 const routes = [
   {
@@ -42,7 +42,7 @@ const routes = [
 const fixedRoutes = [
   {
     label: "Help & Information",
-    path: "/",
+    path: "/help",
     icon: InfoCircledIcon,
   },
 ];
@@ -52,14 +52,10 @@ export default function Sidebar({ session }: any) {
     logout();
   };
   return (
-    <div className="hidden border-r   md:block w-80">
+    <div className="hidden border max-h-[100vh]  md:block w-80">
       <div className="flex h-full max-h-screen flex-col gap-2">
         <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
-          <Link href="/" className="flex items-center gap-2 font-semibold">
-            <span className="self-center text-2xl font-bold whitespace-nowrap ml-8">
-              Wait<span className="text-primary">Art</span>
-            </span>
-          </Link>
+        <Logo />
         </div>
         <div className="">
           {/* <Card>

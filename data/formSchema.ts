@@ -23,4 +23,6 @@ export const FormSchema = z.object({
   placeholderText: z.optional(z.string()),
   heroText: z.optional(z.string()),
   subText: z.optional(z.string()),
+  // Additional fields
+  theme:z.optional(z.string()),
 });

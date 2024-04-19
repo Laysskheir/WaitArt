@@ -2,6 +2,7 @@ import type { NextAuthConfig } from "next-auth";
 import Google from "next-auth/providers/google";
 import Github from "next-auth/providers/github";
 import Email from "next-auth/providers/email";
+import NextAuth, { type Session, type User } from "next-auth";
 
 export default {
   providers: [
@@ -30,11 +31,4 @@ export default {
     // }),
   ],
   secret: process.env.AUTH_SECRET,
-  callbacks: {
-    authorized({ auth }) {
-      const isAuthenticated = !!auth?.user;
-
-      return isAuthenticated;
-    },
-  },
 } satisfies NextAuthConfig;

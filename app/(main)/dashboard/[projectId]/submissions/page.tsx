@@ -20,6 +20,7 @@ import {
 import { CheckCircledIcon, HeartFilledIcon } from "@radix-ui/react-icons";
 import { db } from "@/lib/db";
 import { format } from "date-fns";
+import PhoneSideBar from "@/components/phone-side-bar";
 
 export default async function Submissions({
   params,
@@ -34,6 +35,7 @@ export default async function Submissions({
 
   return (
     <div className="flex min-h-screen w-full flex-col">
+      <PhoneSideBar/>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">
         <div className="grid gap-4 md:grid-cols-2 md:gap-8 lg:grid-cols-3">
           <Card>
@@ -111,12 +113,12 @@ export default async function Submissions({
             </Card>
           </div>
         ) : (
-          <Card>
-            <div className="flex flex-col items-center gap-1 text-center">
+          <Card className="h-[72vh] flex justify-center items-center">
+            <div className="flex flex-col items-center gap-1 text-center p-4">
               <CardHeader className="text-3xl font-bold tracking-tight">
                 No submissions yet
               </CardHeader>
-              <CardContent className="text-sm text-muted-foreground w-1/2">
+              <CardContent className="text-sm text-muted-foreground ">
                 Submissions are entries from visitors who sign up on your
                 waitlist. They represent interested individuals and help manage
                 communication.
