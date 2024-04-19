@@ -4,11 +4,10 @@ import FAQSection from "@/components/main/faq-section";
 import InfoSection from "@/components/main/info-section";
 import { Testimonials } from "@/components/main/testimonials";
 
-export default async function Home() {
-  const session = await auth()
+export default function Home() {
   return (
     <main className="max-w-7xl  mx-auto sm:px-6 lg:px-8">
-      <Hero session={session} />
+      <Hero />
       {/* <Testimonials /> */}
       {/* <FAQSection/> */}
     </main>

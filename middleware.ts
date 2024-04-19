@@ -6,16 +6,27 @@ const { auth } = NextAuth(authConfig);
 
 export default auth((req) => {
   const { nextUrl } = req;
-  console.log(!!req.auth);
-
   const isAuthenticated = !!req.auth;
-  const isPublicRoute = PUBLIC_ROUTES.includes(nextUrl.pathname);
 
-  if (isPublicRoute && isAuthenticated)
-    return Response.redirect(new URL(DEFAULT_REDIRECT, nextUrl));
+  // Protect all routes except public routes and the root path
+  if (
+    !isAuthenticated &&
+    !PUBLIC_ROUTES.includes(nextUrl.pathname) &&
+    nextUrl.pathname !== ROOT
+  ) {
+    return Response.redirect(new URL(ROOT, nextUrl)); // Redirect to login on non-public, non-root paths
+  }
 
-  if (!isAuthenticated && !isPublicRoute)
-    return Response.redirect(new URL(ROOT, nextUrl));
+  // If authenticated, handle redirection based on specific logic (optional)
+  if (isAuthenticated) {
+    return Response.redirect(new URL("/dashboard", nextUrl));
+    // Implement your custom logic for redirecting authenticated users,
+    // considering factors like previous URL, user role, etc.
+    // You can remove this block if no specific redirection behavior is needed.
+  }
+
+  // No redirection needed, explicitly return void
+  return;
 });
 
 export const config = {

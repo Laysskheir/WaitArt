@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -18,9 +18,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="!scroll-smooth selection:bg-primary selection:text-black" >
+    <html
+      lang="en"
+      className="!scroll-smooth selection:bg-primary selection:text-black"
+    >
       <body className={inter.className}>
-      <SessionProvider>
+        <SessionProvider>
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -30,7 +33,7 @@ export default function RootLayout({
             {children}
             <Toaster />
           </ThemeProvider>
-          </SessionProvider>
+        </SessionProvider>
       </body>
     </html>
   );
