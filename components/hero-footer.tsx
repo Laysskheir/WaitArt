@@ -1,10 +1,16 @@
 import React from "react";
 import { Separator } from "./ui/separator";
 import Link from "next/link";
+import { motion } from "framer-motion";
 
 export default function HeroFooter() {
   return (
-    <div className="text-sm space-y-3 text-center text-muted-foreground">
+    <motion.div
+    initial={{ y: 100, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ duration: 1.5 }}
+      className="text-sm space-y-3 text-center text-muted-foreground"
+    >
       <p>
         © 2024
         <span className="underline hover:text-primary">
@@ -27,6 +33,6 @@ export default function HeroFooter() {
         <Separator orientation="vertical" />
         <div>Privacy</div>
       </div>
-    </div>
+    </motion.div>
   );
 }

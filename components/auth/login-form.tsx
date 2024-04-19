@@ -105,17 +105,17 @@ export default function LoginForm() {
           <div className="grid grid-cols-1 gap-6">
             <Button
               variant="outline"
-              className="bg-primary hover:bg-primary/85"
+              className="bg-primary hover:bg-primary/85 p-5"
               onClick={() => signIn("google")}
             >
               <Icons.google className="mr-2 h-4 w-4" />
               Continue with Google
             </Button>
-            <Separator />
-            <Button variant="outline" onClick={() => signIn("github")}>
+            {/* <Separator />
+            <Button variant="outline" className="p-5" onClick={() => signIn("github")}>
               <Icons.gitHub className="mr-2 h-4 w-4" />
               Continue with Github
-            </Button>
+            </Button> */}
           </div>
         </CardContent>
         <CardFooter>
