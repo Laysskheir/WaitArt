@@ -26,6 +26,7 @@ import Loading from "../loading";
 import { Project } from "@/lib/types";
 import { FileUpload } from "../FileUpload";
 import { useToast } from "../ui/use-toast";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 // interface ModalProps {
 //   children: React.ReactNode;
@@ -34,7 +35,7 @@ import { useToast } from "../ui/use-toast";
 
 export function AddProject({ children, data }: any) {
   const router = useRouter();
-  const { toast } = useToast()
+  const { toast } = useToast();
 
   const formSchema = z.object({
     name: z.string().min(1, {
@@ -119,7 +120,11 @@ export function AddProject({ children, data }: any) {
                   </FormItem>
                 )}
               />
-              <div className="flex justify-end">
+              <div className="flex justify-between">
+                <div className=" italic text-muted-foreground flex gap-x-1 text-xs w-60">
+                  <InfoCircledIcon />
+                  <p>Please wait while the image is being uploaded...</p>
+                </div>
                 <Button type="submit" disabled={isLoading}>
                   {isLoading ? <Loading /> : "Save"}
                 </Button>
