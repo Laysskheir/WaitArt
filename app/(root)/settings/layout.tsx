@@ -26,9 +26,7 @@ interface SettingsLayoutProps {
 export default async function SettingsLayout({ children }: SettingsLayoutProps) {
   const session = await auth();
 
-  if (!session){
-    redirect("/")
-  }
+  
   return (
     <>
       <div className=" space-y-6 p-10 pb-16 md:block">

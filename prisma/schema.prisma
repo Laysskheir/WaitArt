@@ -50,6 +50,11 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+
+  userSubscriptions userSubscription? @relation(fields: [userSubscriptionId], references: [id])
+
+  projects           Project[]
+  userSubscriptionId String?
 }
 
 model Project {
@@ -63,6 +68,7 @@ model Project {
 
   submissions Submission[]
   setting     Settings[]
+  User        User         @relation(fields: [userId], references: [id])
 }
 
 model Settings {
@@ -112,4 +118,5 @@ model userSubscription {
   stripePriceId        String? @map("stripe_price_id")
 
   stripeCurrentPeriodEnd DateTime? @map("stripe_current_period_end")
+  User                   User[]
 }

@@ -2,6 +2,7 @@ import currentUser from "@/actions/current-user";
 import { auth } from "@/auth";
 import { generateSlug } from "@/data/slug";
 import { db } from "@/lib/db";
+import { revalidatePath } from "next/cache";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -24,6 +25,8 @@ export async function POST(req: NextRequest) {
         logoUrl: fileUrl,
       },
     });
+
+    revalidatePath("/dashboard")
 
     return NextResponse.json(projects);
   } catch (error) {
